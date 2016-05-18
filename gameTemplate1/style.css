@@ -1,8 +1,5 @@
-body {
-
-	background-image: url("http://hdwallpaperia.com/wp-content/uploads/2013/11/Game-Backgrounds-Wallpaper.jpg");
-    background-size: cover;
-    background-position: center center;
+    body {
+    background-color: black;
 	font-family: monospace;
 
 }
@@ -39,8 +36,57 @@ body {
 
 /*Stuff below governs the Explore screen*/
 
-#exploreBody {
-	background-image: url("img/exploreHome1.jpg");
-	background-position: bottom center;
 
+
+#titleBack{
+    width: 480px;
+    height: 320px;
+    background-color: red;
+    background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/GroundTextures/Grass/SandTexture.png");
+    border: 5px solid #4BCF34;
+    vertical-align: center;
+    position: absolute;
 }
+
+#topwall {
+    height: 16px;
+    width: 480px;
+    float: top;
+}
+
+#botwall {
+    height: 16px;
+    width: 480px;
+    position: absolute;
+    bottom: 0;
+}
+
+#leftwall {
+    width: 16px;
+    height: 304px;
+    float: left;
+}
+
+#rightwall {
+    width: 16px;
+    height: 320px;
+    float: right;
+}
+
+.wall {
+    background-image: url("file:///users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/WallTextures/WallTextureLeft.png");
+}
+
+#player {
+    width: 32px;
+    height: 32px;
+    float: left;
+    background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/Player.png");
+    background-repeat: no-repeat;
+    background-size: 32px, 32px;
+}
+
+
+
+
+
