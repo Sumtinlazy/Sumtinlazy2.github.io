@@ -46,6 +46,7 @@
     border: 5px solid #4BCF34;
     vertical-align: center;
     position: absolute;
+    background-size: 32px, 32px;
 }
 
 #topwall {
@@ -86,7 +87,35 @@
     background-size: 32px, 32px;
 }
 
+.rock {
+    background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/GroundTextures/Grass/SandRockTexture.png");
+    background-size: 32px, 32px;
+    width: 32px;
+    height: 32px;
+}
 
+#rockone {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
 
+#rocktwo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
 
+#rockthree {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.brock {
+    width: 32px;
+    height: 32px;
+    background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/GroundTextures/Grass/GrassRock.png");
+    background-size: 32px, 32px;
+}
 
