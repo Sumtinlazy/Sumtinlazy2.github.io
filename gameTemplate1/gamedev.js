@@ -3,34 +3,31 @@ var generator = Math.floor((Math.random()*464)+16);
 $( document ).ready(function() {
 	generate();
 
-	function right(){
-		//.animate to more right
-	}
-	function left(){
-		//.animate to move left
-	}
-	function up(){
-		//.animate to move up
-	}
-	function down(){
-		//.animate to move down
-	}
+boolean up;
+boolean down;
+boolean left;
+boolean right;
 
+var x = $("#player").width;
 
 });
 
 document.addEventListener("keydown", function(event){
 	if(event.code === "KeyD") {
 		console.log("Move Right")
+		right = true;
 	}
 	if(event.code === "KeyW") {
 		console.log("Move Up")
+		up = true;
 	}
 	if(event.code === "KeyA") {
 		console.log("Move Left")
+		left = true;
 	}
 	if(event.code === "KeyS") {
 		console.log("Move Down")
+		down = true;
 	}
 });
 
@@ -54,5 +51,9 @@ function generate(){
 	generator = Math.floor((Math.random()*304)+16); 
 	$("#rockthree").css({"left": generator});
 	console.log("rockthree left: "+generator);
-	generator = Math.floor((Math.random()*464)+16); 
+	generator = Math.floor((Math.random()*464)+16); 	
+}
+
+while (up = true) {
+
 }
