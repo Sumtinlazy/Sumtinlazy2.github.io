@@ -85,6 +85,8 @@
     background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/Player.png");
     background-repeat: no-repeat;
     background-size: 32px, 32px;
+    position: absolute;
+
 }
 
 .rock {
