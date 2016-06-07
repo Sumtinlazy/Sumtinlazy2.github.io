@@ -38,15 +38,26 @@
 
 
 
+#inventory{
+    position: absolute;
+    width: 200px; 
+    height: 320px;
+    background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/inventory.png");
+    top: 5px;
+    left: 490px;
+}
+
 #titleBack{
     width: 480px;
     height: 320px;
     background-color: red;
     background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/GroundTextures/Grass/SandTexture.png");
-    border: 5px solid #4BCF34;
+    border: 5px solid #7A7A7A;
     vertical-align: center;
     position: absolute;
     background-size: 32px, 32px;
+    top: 0;
+    left: 0;
 }
 
 #topwall {
@@ -86,6 +97,8 @@
     background-repeat: no-repeat;
     background-size: 32px, 32px;
     position: absolute;
+    top: 50%;
+    left: 50%;
 
 }
 
@@ -119,5 +132,22 @@
     height: 32px;
     background-image: url("file:///Users/s200787/Documents/Sumtinlazy2/gameTemplate1/img/jsTexture/GroundTextures/Grass/GrassRock.png");
     background-size: 32px, 32px;
+}
+
+.enemy {
+    width: 32px;
+    height: 32px;
+    background-image: url("file:///Users/s200787/Dropbox/JS%20Textures/Enemy.png");
+    background-size: 32px, 32px;
+}
+
+#health {
+    width: 480px;
+    height: 16px;
+    background-color: red;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    text-align: center;
 }
 
