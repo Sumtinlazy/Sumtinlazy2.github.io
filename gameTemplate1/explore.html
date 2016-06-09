@@ -19,13 +19,29 @@
 
 <script type="text/javascript">
 
-	var x = 50;
-	var y = 40;
-	var spdX = 30;
-	var spdY = 5;
-	var message = 'bounce';
 	var height = 500;
 	var width = 500;
+	var message = 'bounce';
+
+	//player
+	
+	//enemy
+	var enemy {
+		x = 10;
+		y = 150;
+		spdX = -20;
+		spdY = 5;
+		message = 'bounce';
+		name = 'E'
+	};
+
+	var player {
+		x = 50;
+		y = 40;
+		spdX = 30;
+		spdY = 5;
+		name = 'P'
+	}
 	
 	var ctx = document.getElementById("canvas").getContext("2d");
 
@@ -33,15 +49,40 @@
 
 
 function update() {
-	ctx.fillText('P',  x, y);
+	ctx.fillText(name ,  x, y);
 	x += spdX;
 	y += spdY;
-	if (x >= width || x <= width) {
-		spdX = -spdX;
+	if (player.x >= width) {
+		player.spdX = -spdX;
+		console.log(message);
+	} else if (x <= 0) {
+		player.spdX = -player.spdX;
 		console.log(message);
 	}
-	if (y >= width || y <= width) {
-		spdY = -spdY;
+	if (y >= width) {
+		player.spdY = -player.spdY;
+		console.log(message);
+	} else if (y <= 0) {
+		player.spdY = -player.spdY;
+		console.log(message);
+	}
+
+	//enemy
+	ctx.fillText(enemy_name ,  enemy_x, enemy_y);
+	enemy.x += enemy.spdX;
+	enemy.y += enemy.spdY;
+	if (enemy.x >= width) {
+		enemy.spdX = -enemy.spdX;
+		console.log(message);
+	} else if (enemy.x <= 0) {
+		enemy.spdX = -enemy.spdX;
+		console.log(message);
+	}
+	if (enemy.y >= width) {
+		enemy.spdY = -enemy.spdY;
+		console.log(message);
+	} else if (enemy.y <= 0) {
+		enemy.spdY = -enemy.spdY;
 		console.log(message);
 	}
 }
