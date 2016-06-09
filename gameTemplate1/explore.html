@@ -31,7 +31,10 @@ var player = {
 	y:40,
 	spdY:5,
 	name:'P',
-	hp:10	
+	hp:10,
+	color: 'green',
+	width: 20,
+	height: 20
 };
 
 var enemyList = {};
@@ -48,31 +51,34 @@ testCollisionEntity = function (entity1,entity2){       //return if colliding (t
                 x:entity1.x-entity1.width/2,
                 y:entity1.y-entity1.height/2,
                 width:entity1.width,
-                height:entity1.height,
-        }
+                height:entity1.height
+        };
         var rect2 = {
                 x:entity2.x-entity2.width/2,
                 y:entity2.y-entity2.height/2,
                 width:entity2.width,
-                height:entity2.height,
-        }
+                height:entity2.height
+        };
         return testCollisionRectRect(rect1,rect2);
        
-}
+};
 
 testCollisionEntity = function (entity1,entity2){	//return if colliding (true/false)
 	var distance = getDistanceBetweenEntity(entity1,entity2);
 	return distance < 30;
 };
 
-Enemy = function (id,x,y,spdX,spdY){
+Enemy = function (id,x,y,spdX,spdY, width, height, color){
 	var enemy3 = {
 		x:x,
 		spdX:spdX,
 		y:y,
 		spdY:spdY,
 		name:'E',
-		id:id
+		id:id,
+		width:width,
+		height:height,
+		color: 'red'
 	};
 	enemyList[id] = enemy3;
 	
@@ -92,7 +98,7 @@ document.onmousemove = function(mouse){
 
 updateEntity = function (something){
 	updateEntityPosition(something);
-	drawEnemy(something);
+	drawEntity(something);
 };
 updateEntityPosition = function(something){
 	something.x += something.spdX;
@@ -107,15 +113,10 @@ updateEntityPosition = function(something){
 };
 
 
-drawPlayer = function(something){
-	ctx.fillStyle = 'green';
-	ctx.fillRect(something.x-10,something.y-10, 20, 20);
+drawEntity = function(something){
+	ctx.fillStyle = something.color;
+	ctx.fillRect(something.x-something.width/2,something.y-something.height/2, something.width, something.height);
 	ctx.fillStyle = 'black';
-};
-
-drawEnemy = function(something){
-	ctx.fillStyle = 'red';
-	ctx.fillRect(something.x-15,something.y-15, 30, 30);
 };
 
 var lock = 0;
@@ -132,35 +133,36 @@ update = function(){
 			if(player.hp <= 0){
 				var timeSurvived = Date.now() - timeWhenGameStarted;
 				
-				console.log("You lost! You survived for " + timeSurvived + " ms.");
 				timeWhenGameStarted = Date.now();
 				player.hp = 0;
 				$('#score').css({"background-color":"red"});
 				$('.finish').show();
-				if(lock == 0){
+				if(lock === 0){
 					$('#time').html("You survived for " + timeSurvived + " ms.")
-				}
+				};
 				lock = 1;
 			}
 		}
 		
 	}
 	
-	drawPlayer(player);
+	drawEntity(player);
 	ctx.fillText(player.hp + " Hp",0,30);
 };
 
-Enemy('E1',150,350,10,15);
-Enemy('E2',250,350,10,-15);
-Enemy('E3',250,150,10,-8);
+Enemy('E1',150,350,10,15,30,30);
+Enemy('E2',250,350,10,-15,20,15);
+Enemy('E3',250,150,10,-8,10,30);
 
 
 setInterval(update,40);
 setInterval(scoreUpdate, 1000)
 
+var multiplier = 3;
+
 function scoreUpdate() {
 	if(player.hp > 0){
-		score = score + 1;
+		score = score + multiplier;
 	}
 	$("#scoreholder").html(score);
 	console.log(score);
