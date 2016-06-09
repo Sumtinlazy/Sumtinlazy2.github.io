@@ -25,67 +25,71 @@
 
 	//player
 	
-	//enemy
-	var enemy {
-		x = 10;
-		y = 150;
-		spdX = -20;
-		spdY = 5;
-		message = 'bounce';
-		name = 'E'
-	};
+	var enemyList = {};
 
-	var player {
-		x = 50;
-		y = 40;
-		spdX = 30;
-		spdY = 5;
-		name = 'P'
+	Enemy('E1', 10, 150, -20, 5)
+	Enemy('E2', 400, 200, -20, 10);
+
+	function Enemy(id, x, y, spdX, spdY) {
+		var enemy2 = {
+			x : x,
+			y : y,
+			spdX : spdX,
+			spdY : spdY,
+			message : 'bounce',
+			name : 'E',
+			id : id
+		};
+	enemyList[id] = enemy2;
 	}
+
+
+
+	var player = {
+        x:50,
+        spdX:30,
+        y:40,
+        spdY:5,
+        name:'P',      
+	};
 	
 	var ctx = document.getElementById("canvas").getContext("2d");
 
 	ctx.font = '30px Arial' ;
 
 
-function update() {
-	ctx.fillText(name ,  x, y);
-	x += spdX;
-	y += spdY;
-	if (player.x >= width) {
-		player.spdX = -spdX;
-		console.log(message);
-	} else if (x <= 0) {
-		player.spdX = -player.spdX;
-		console.log(message);
-	}
-	if (y >= width) {
-		player.spdY = -player.spdY;
-		console.log(message);
-	} else if (y <= 0) {
-		player.spdY = -player.spdY;
-		console.log(message);
+	function updateEntity(something) {
+
+		//enemy
+		ctx.fillText(something.name ,  something.x, something.y);
+		something.x += something.spdX;
+		something.y += something.spdY;
+		if (something.x >= width) {
+			something.spdX = -something.spdX;
+			console.log(message);
+		} else if (something.x <= 0) {
+			something.spdX = -something.spdX;
+			console.log(message);
+		}
+		if (something.y >= width) {
+			something.spdY = -something.spdY;
+			console.log(message);
+		} else if (something.y <= 0) {
+			something.spdY = -something.spdY;
+			console.log(message);
+		}
+		console.log("enemy x ", something.x);
+		console.log("enemy y ", something.y);
 	}
 
-	//enemy
-	ctx.fillText(enemy_name ,  enemy_x, enemy_y);
-	enemy.x += enemy.spdX;
-	enemy.y += enemy.spdY;
-	if (enemy.x >= width) {
-		enemy.spdX = -enemy.spdX;
-		console.log(message);
-	} else if (enemy.x <= 0) {
-		enemy.spdX = -enemy.spdX;
-		console.log(message);
+	function update(){
+		ctx.clearRect(0,0,width, height);
+		updateEntity(player);
+
+		for(var key in enemyList) {
+			updateEntity(enemyList[key]);
+		}
 	}
-	if (enemy.y >= width) {
-		enemy.spdY = -enemy.spdY;
-		console.log(message);
-	} else if (enemy.y <= 0) {
-		enemy.spdY = -enemy.spdY;
-		console.log(message);
-	}
-}
 
 	setInterval(update, 40);
 
