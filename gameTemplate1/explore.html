@@ -14,26 +14,42 @@
 <body id="exploreBody">
 
 <!--Your code goes here !-->
-<div id='titleBack'>
-	<div id="player"></div>
-	<div id="rightwall" class="wall"></div>
-	<div id="topwall" class="wall"></div>
-	<div id="botwall" class="wall"></div>
-	<div id="leftwall" class="wall"></div>
-	<div class="rock" id="rockone"></div>
-	<div class="rock" id="rocktwo"></div>
-	<div class="rock" id="rockthree"></div>
-	<div class-"enemy" id="nmeone"></div>
-	<div class="enemy" id="nmetwo"></div>
-	<div class="enemy" id="nmethree"></div>
-	<div class="enemy" id="nmefour"></div>
-</div>
 
-<div id="health"><span id="health">100</span></div>
+<canvas id="canvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
+
+<script type="text/javascript">
+
+	var x = 50;
+	var y = 40;
+	var spdX = 30;
+	var spdY = 5;
+	var message = 'bounce';
+	var height = 500;
+	var width = 500;
+	
+	var ctx = document.getElementById("canvas").getContext("2d");
+
+	ctx.font = '30px Arial' ;
 
 
+function update() {
+	ctx.fillText('P',  x, y);
+	x += spdX;
+	y += spdY;
+	if (x >= width || x <= width) {
+		spdX = -spdX;
+		console.log(message);
+	}
+	if (y >= width || y <= width) {
+		spdY = -spdY;
+		console.log(message);
+	}
+}
 
-<div class="brock"></div>
+	setInterval(update, 40);
+
+
+</script>
 
 </body>
 </html>
