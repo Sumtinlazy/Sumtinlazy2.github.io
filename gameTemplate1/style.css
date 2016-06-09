@@ -1,6 +1,24 @@
     body {
 	font-family: monospace;
-
 }
 
 /*Stuff below governs the start screen*/
+
+#score {
+    width: 190px;
+    height: 490px;
+    background-color: grey;
+    float: left;
+    border-style: outset;
+    border-width: 5px;
+    border-color: black;
+}
+
+#ctx {
+    float: left;
+}
+
+#scoreholder {
+    width: 50px;
+    height: 20px;
+}
